@@ -51,5 +51,12 @@ body{
     transform: scale(0.9);
 }
 .controls .controls__range{
-    margin-botton: 5px;
+    margin-bottom: 5px;
+}
+.controls .controls__dash{
+    margin-top: 10px;
+    width : 350px;
+    height : 30px;
+    background-image: url("image/d1.png");
+    cursor: pointer;
 }
