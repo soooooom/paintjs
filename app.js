@@ -4,6 +4,8 @@ const brushSize = document.getElementById("jsRange");
 const mode = document.getElementById("jsMode");
 const save = document.getElementById("jsSave");
 const dash = document.getElementById("jsDash");
+const erase = document.getElementById("jsErase");
+const clear = document.getElementById("jsClear");
 const ctx= canvas.getContext("2d");
 
 const INITIAL_COLOR = "#FFFFFF";
@@ -93,13 +95,24 @@ function handleDashClick(){
     else if(dashValue ==2){
         dashValue =3;
         dash.style.backgroundImage = "url(image/d3.png)";
-        ctx.setLineDash([10,2,3]);
+        ctx.setLineDash([20, 3, 3, 3, 3, 3, 3, 3]);
     }
     else{
         dashValue =1;
         dash.style.backgroundImage = "url(image/d1.png)";
-        ctx.setLineDash();
+        ctx.setLineDash([]);
     }
+}
+
+function handleEraseClick(){
+    filling= false;
+    ctx.strokeStyle = "#FFFFFF"
+    ctx.setLineDash([]);
+}
+function handleClearClick(){
+    filling = true;
+    ctx.fillStyle = "#FFFFFF"
+    ctx.fillRect(0,0,canvas.width, canvas.height);
 }
 
 if(canvas){
@@ -129,4 +142,11 @@ if(save){
 }
 if(dash){
     dash.addEventListener("click", handleDashClick);
+}
+
+if(clear){
+    clear.addEventListener("click",handleClearClick);
+}
+if(erase){
+    erase.addEventListener("click",handleEraseClick);
 }
